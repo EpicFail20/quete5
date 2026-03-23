@@ -1,0 +1,29 @@
+## Tableau d'adressage :
+
+Découpage symétrique: nous avons besoin d'au moins 50 ip pour le pôle informatique donc il nous faut 2^6  (64) adresses x 4 départements. On donc bien besoin de 4x6 bit = 24bit pour tout coder.
+
+
+|                       | Adressage reseau | Adresse de broadcast | Adresse de début de plage | Adresse de fin de plage |
+| --------------------- | ---------------- | -------------------- | ------------------------- | ----------------------- |
+| Le Pôle informatique  | 172.16.1.0       | 172.16.1.63          | 172.16.1.1                | 172.16.1.62             |
+| Le Pôle Administratif | 172.16.1.64      | 172.16.1.127         | 172.16.1.65               | 172.16.1.126            |
+| Le Pôle Technicien    | 172.16.1.128     | 172.16.1.191         | 172.16.1.129              | 172.16.1.190            |
+| Le Pôle développement | 172.16.1.192     | 172.16.255           | 172.16.1.193              | 172.16.1.254            |
+
+
+Découpage asymétrique:
+Pour le pôle Informatique on a besoin de 2^6 ip soit 62 ip disponibles avec une adresse réseau comme suit: 172.16.1.0/26
+Pour le pôle Administratif on a besoin de 2^5 ip soit 30 ip disponibles donc on commencera à:
+172.16.1.64/27
+Pour le pôle Technicien on a besoin de 2^5 ip soit 30 ip disponibles
+Pour le pôle développement on a besoin de 2^4 ip soit 14 ip disponibles
+
+
+|                       | Adressage reseau | Adresse de broadcast | Adresse de début de plage | Adresse de fin de plage |
+| --------------------- | ---------------- | -------------------- | ------------------------- | ----------------------- |
+| Le Pôle informatique  | 172.16.1.0       | 172.16.1.63          | 172.16.1.1                | 172.16.1.62             |
+| Le Pôle Administratif | 172.16.1.64      | 172.16.1.95          | 172.16.1.65               | 172.16.1.94             |
+| Le Pôle Technicien    | 172.16.1.96      | 172.16.1.127         | 172.16.1.97               | 172.16.1.126            |
+| Le Pôle développement | 172.16.1.128     | 172.16.143           | 172.16.1.129              | 172.16.1.142            |
+
+En conclusion on remarque que le découpage asymétrique permet bien d’économiser des adresses ip disponibles.
